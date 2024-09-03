@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="font-[Figtree]">
+    <nav class="bg-slate-700 flex justify-start items-center px-10">
+        <div class="container  flex justify-start items-center">
+            <a href=""><i class="text-6xl text-white fa-brands fa-php mr-9"></i></a>
+
+            <ul class="flex justify-center items-center">
+                <li class="border-b-2 border-b-indigo-500 py-7  "> <a class="text-lg font-medium  mx-5 text-white"
+                        href="#">Dashboard</a> </li>
+                <li> <a class="text-lg font-medium mx-5 text-slate-300" href="#">Transaksi</a> </li>
+                <li> <a class="text-lg font-medium mx-5 text-slate-300" href="#">Pelanggan</a> </li>
+                <li> <a class="text-lg font-medium mx-5 text-slate-300" href="#">Karyawan</a> </li>
+                <li> <a class="text-lg font-medium mx-5 text-slate-300" href="#">Obat</a> </li>
+            </ul>
+    </nav>
+    <div class="bg-slate-700 flex justify-start items-center px-10  py-8 border-t border-t-gray-600">
+        <div class="container  flex justify-start items-center">
+            <h1 class="text-white text-2xl font-medium">Dashboard</h1>
+        </div>
+    </div>
+    <div class="bg-slate-800 ">
+        <div class="grid grid-cols-3 gap-8 px-10 py-10">
+            <div class="bg-slate-700 ">
+                <h1 class="text-white">Test</h1>
+                <p class="text-white">12</p>
+            </div>
+            <div class="bg-slate-700 ">
+                <h1 class="text-white">Test</h1>
+                <p class="text-white">12</p>
+            </div>
+            <div class="bg-slate-700 ">
+                <h1 class="text-white">Test</h1>
+                <p class="text-white">12</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
