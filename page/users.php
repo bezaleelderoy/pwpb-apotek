@@ -1,8 +1,12 @@
 <?php
 
 include('../config/conn.php');
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: login.php');
+    exit;
+}
 
-include('../config/conn.php');
 
 if (isset($_POST['submit'])) {
 

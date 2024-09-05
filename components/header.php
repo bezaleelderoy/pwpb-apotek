@@ -106,8 +106,17 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="./assets/images/users/1.jpg" alt="user" class="profile-pic me-2">Markarn Doe
+                                data-bs-toggle="dropdown">
+                                <img src="./assets/images/users/1.jpg" alt="user" class="profile-pic me-2">
+                                <?php
+
+                                if ($_SESSION['loggedin'] = true) {
+                                    echo $_SESSION['name'];
+                                } else {
+                                    echo " ";
+                                }
+
+                                ?>
                             </a>
                             <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -149,8 +158,8 @@
                                 href="users.php" aria-expanded="false"><i class="me-3 fa fa-columns"
                                     aria-hidden="true"></i><span class="hide-menu">Users</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="404.html" aria-expanded="false"><i class="me-3 fa fa-info-circle"
-                                    aria-hidden="true"></i><span class="hide-menu">Error 404</span></a></li>
+                                href="logout.php" aria-expanded="false"><i class="me-3 fa fa-info-circle"
+                                    aria-hidden="true"></i><span class="hide-menu">Logout</span></a></li>
 
                     </ul>
 

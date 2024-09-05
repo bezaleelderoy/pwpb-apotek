@@ -1,4 +1,11 @@
-<?php include '../components/header.php'; ?>
+<?php
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: login.php');
+    exit;
+}
+
+include '../components/header.php'; ?>
 <!-- ============================================================== -->
 <!-- Page wrapper  -->
 <!-- ============================================================== -->
