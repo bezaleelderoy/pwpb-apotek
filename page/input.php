@@ -120,7 +120,7 @@ include '../components/header.php'; ?>
                             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                         </form>
                         <?php } else if ($page == "pelanggan") { ?>
-                        <form action="pelanggan.php" method="post">
+                        <form action="pelanggan.php" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
                                 <input name="namalengkap" type="text" class="form-control">

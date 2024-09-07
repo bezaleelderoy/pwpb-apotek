@@ -10,12 +10,16 @@ if (!isset($_SESSION['loggedin'])) {
 
 if (isset($_POST['submit'])) {
 
-    $namakaryawan = $_POST['namakaryawan'];
+    $namalengkap = $_POST['namalengkap'];
     $alamat = $_POST['alamat'];
     $telp = $_POST['telp'];
+    $usia = $_POST['usia'];
+    $buktifotoresep = $_FILES['buktifotoresep']['name'];
+    $img = $_FILES['buktifotoresep']['tmp_name'];
 
+    move_uploaded_file($img, "img/".$buktifotoresep);
 
-    $insert = mysqli_query($conn, "INSERT INTO tb_karyawan VALUES (NULL, '$namakaryawan', '$alamat', '$telp')");
+    $insert = mysqli_query($conn, "INSERT INTO tb_pelanggan VALUES (NULL, '$namalengkap', '$alamat', '$telp', $usia, '$buktifotoresep')");
 }
 
 if (isset($_POST['update'])) {
@@ -110,7 +114,7 @@ include '../components/header.php';
                                         echo "<td>" . $data['alamat'] . "</td>";
                                         echo "<td>" . $data['telp'] . "</td>";
                                         echo "<td>" . $data['usia'] . "</td>";
-                                        echo "<td>" . $data['buktifotoresep'] . "</td>";
+                                        echo "<td><img src='img/$data[buktifotoresep]' width='50px'></td>";
                                         echo "<td><a href='edit.php?id=" . $data['idpelanggan'] . "&data=pelanggan' type='button' class='btn btn-warning'><i class='bi bi-pencil-square'></i></a></td>";
                                         echo "<td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#" . $modalId . "'><i class='bi bi-trash'></i></button></td>";
                                         echo "<div class='modal fade' id='" . $modalId . "' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
