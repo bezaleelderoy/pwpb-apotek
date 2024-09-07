@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2024 at 04:28 AM
+-- Generation Time: Sep 07, 2024 at 05:02 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -150,7 +150,8 @@ INSERT INTO `tb_pelanggan` (`idpelanggan`, `namalengkap`, `alamat`, `telp`, `usi
 (2, 'Aurelio Fransiskus Sinarta', 'Jalan Pulau Ayu No 27', '08771298334', 17, '93840.jpeg'),
 (3, 'Muhammad Jaffan Hanindito', 'Jalan Patih Jelantik', '08744219335', 18, '759819.jpeg'),
 (4, 'M. Hidayatullah', 'Jalan Nangka Selatan No 90', '08774912398', 20, '38520.jpeg'),
-(5, 'Henri Saputra', 'Jl Pulau Buton No 100', '089371274945', 18, 'asdjoa.jpeg');
+(5, 'Henri Saputra', 'Jl Pulau Buton No 100', '089371274945', 18, 'asdjoa.jpeg'),
+(6, 'Waswas', 'Jalan Tukad Citarum', '08793845566', 33, 'PHP-logo.svg-removebg-preview.png');
 
 -- --------------------------------------------------------
 
@@ -283,7 +284,7 @@ ALTER TABLE `tb_obat`
 -- AUTO_INCREMENT for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
-  MODIFY `idpelanggan` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idpelanggan` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi`
