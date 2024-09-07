@@ -5,6 +5,7 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 
+include '../config/conn.php';
 include '../components/header.php'; ?>
 <!-- ============================================================== -->
 <!-- Page wrapper  -->
@@ -19,13 +20,7 @@ include '../components/header.php'; ?>
                 <?php
                 $page = $_GET['data'];
 
-                if ($page == "karyawan") {
-                    $title = "Karyawan";
-                } else if ($page == "obat") {
-                    $title = "Obat";
-                } else if ($page == "pelanggan") {
-                    $title = "Pelanggan";
-                }
+                $title = ucfirst($page);
 
 
                 ?>
@@ -64,84 +59,147 @@ include '../components/header.php'; ?>
 
                         if ($page == "karyawan") {
                         ?>
-                            <form action="karyawan.php" method="post">
-                                <div class="mb-3">
-                                    <label class="form-label">Nama Karyawan</label>
-                                    <input name="namakaryawan" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                    <div id="emailHelp" class="form-text">Mohon menggunakan nama lengkap.</div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Alamat</label>
-                                    <textarea name="alamat" class="form-control"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Nomor Telepon</label>
-                                    <input name="telp" type="number" class="form-control">
-                                </div>
-                                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                            </form>
+                        <form action="karyawan.php" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">Nama Karyawan</label>
+                                <input name="namakaryawan" type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">Mohon menggunakan nama lengkap.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Alamat</label>
+                                <textarea name="alamat" class="form-control"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nomor Telepon</label>
+                                <input name="telp" type="number" class="form-control">
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                        </form>
                         <?php } else if ($page == "obat") { ?>
-                            <form action="obat.php" method="post">
-                                <div class="mb-3">
-                                    <label class="form-label">Nama Obat</label>
-                                    <input name="namaobat" type="text" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Supplier</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Supplier</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Kategori Obat</label>
-                                    <input name="kategoriobat" type="text" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Harga Jual</label>
-                                    <input name="hargajual" type="number" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Harga Beli</label>
-                                    <input name="hargabeli" type="number" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Stock Obat</label>
-                                    <input name="stok_obat" type="number" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Keterangan</label>
-                                    <textarea name="keterangan" class="form-control"></textarea>
-                                </div>
-                                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                            </form>
+                        <form action="obat.php" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">Nama Obat</label>
+                                <input name="namaobat" type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Supplier</label>
+                                <select class="form-select" name='id_supplier'>
+                                    <option>Supplier</option>
+                                    <?php 
+                                
+                                    $query = mysqli_query($conn, "SELECT * FROM tb_obat INNER JOIN tb_supplier ON tb_obat.id_supplier = tb_supplier.id_supplier");
+                                    
+                                    while ($data = mysqli_fetch_array($query)){
+                                        echo "<option value='$data[id_supplier]' >$data[perusahaan]</option>";
+                                    }
+                                
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Kategori Obat</label>
+                                <input name="kategoriobat" type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Harga Jual</label>
+                                <input name="hargajual" type="number" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Harga Beli</label>
+                                <input name="hargabeli" type="number" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Stock Obat</label>
+                                <input name="stok_obat" type="number" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Keterangan</label>
+                                <textarea name="keterangan" class="form-control"></textarea>
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                        </form>
                         <?php } else if ($page == "pelanggan") { ?>
-                            <form action="obat.php" method="post">
-                                <div class="mb-3">
-                                    <label class="form-label">Nama</label>
-                                    <input name="namalengkap" type="text" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Alamat</label>
-                                    <textarea name="alamat" class="form-control"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Telp</label>
-                                    <input name="telp" type="number" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Usia</label>
-                                    <input name="usia" type="number" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Bukti Foto Resep</label>
-                                    <input name="buktifotoresep" type="file" class="form-control">
-                                </div>
-                                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                            </form>
-                        <?php } ?>
+                        <form action="pelanggan.php" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">Nama</label>
+                                <input name="namalengkap" type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Alamat</label>
+                                <textarea name="alamat" class="form-control"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Telp</label>
+                                <input name="telp" type="number" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Usia</label>
+                                <input name="usia" type="number" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Bukti Foto Resep</label>
+                                <input name="buktifotoresep" type="file" class="form-control">
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <?php } else if ($page == "supplier") {?>
+                        <form action="supplier.php" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">Nama</label>
+                                <input name="perusahaan" type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Telepon</label>
+                                <input name="telp" type="number" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Alamat</label>
+                                <textarea name="alamat" class="form-control"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Keterangan</label>
+                                <textarea name="keterangan" class="form-control"></textarea>
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <?php } else if ($page == "users") {?>
+                        <form action="users.php" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">Username</label>
+                                <input name="username" type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Password</label>
+                                <input name="password" type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Level User</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Editor">Editor</option>
+                                    <option value="Viewer">Viewer</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Karyawan</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Nama</option>
+                                    <?php 
+                                
+                                    $query = mysqli_query($conn, "SELECT * FROM tb_login INNER JOIN tb_karyawan ON tb_login.idkaryawan = tb_karyawan.idkaryawan");
+                                    
+                                    while ($data = mysqli_fetch_array($query)){
+                                        echo "<option value='$data[idkaryawan]' name='idkaryawan'>$data[namakaryawan]</option>";
+                                    }
+                                
+                                    ?>
+                                </select>
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <?php }?>
                     </div>
                 </div>
             </div>
@@ -165,7 +223,8 @@ include '../components/header.php'; ?>
     <!-- footer -->
     <!-- ============================================================== -->
     <footer class="footer text-center">
-        © 2021 Monster Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
+        © 2021 Monster Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a> Distributed By <a
+            href="https://themewagon.com">ThemeWagon</a>
     </footer>
     <!-- ============================================================== -->
     <!-- End footer -->

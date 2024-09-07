@@ -10,12 +10,15 @@ if (!isset($_SESSION['loggedin'])) {
 
 if (isset($_POST['submit'])) {
 
-    $namakaryawan = $_POST['namakaryawan'];
-    $alamat = $_POST['alamat'];
-    $telp = $_POST['telp'];
+    $id_supplier = $_POST['id_supplier'];
+    $namaobat = $_POST['namaobat'];
+    $kategoriobat = $_POST['kategoriobat'];
+    $hargajual = $_POST['hargajual'];
+    $hargabeli = $_POST['hargabeli'];
+    $stok_obat = $_POST['stok_obat'];
+    $keterangan = $_POST['keterangan'];
 
-
-    $insert = mysqli_query($conn, "INSERT INTO tb_karyawan VALUES (NULL, '$namakaryawan', '$alamat', '$telp')");
+    $insert = mysqli_query($conn, "INSERT INTO tb_obat VALUES (NULL, $id_supplier, '$namaobat', '$kategoriobat', $hargajual, $hargabeli, $stok_obat, '$keterangan')");
 }
 
 if (isset($_POST['update'])) {
@@ -51,16 +54,16 @@ include '../components/header.php';
                 </div>
             </div>
             <?php if (isset($_POST['submit'])) { ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Success!</strong> Data succesfully added.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> Data succesfully added.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <?php } ?>
             <?php if (isset($_POST['update'])) { ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Success!</strong> Data succesfully updated.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> Data succesfully updated.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <?php } ?>
         </div>
     </div>
@@ -168,7 +171,8 @@ include '../components/header.php';
     <!-- footer -->
     <!-- ============================================================== -->
     <footer class="footer text-center">
-        © 2021 Monster Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
+        © 2021 Monster Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a> Distributed By <a
+            href="https://themewagon.com">ThemeWagon</a>
     </footer>
     <!-- ============================================================== -->
     <!-- End footer -->

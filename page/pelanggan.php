@@ -40,27 +40,27 @@ include '../components/header.php';
     <div class="page-breadcrumb pb-0">
         <div class="row align-items-center">
             <div class="col-md-6 col-8 align-self-center">
-                <h3 class="page-title mb-0 p-0">Obat</h3>
+                <h3 class="page-title mb-0 p-0">Pelanggan</h3>
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Obat</li>
+                            <li class="breadcrumb-item active" aria-current="page">Pelanggan</li>
                         </ol>
                     </nav>
                 </div>
             </div>
             <?php if (isset($_POST['submit'])) { ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Success!</strong> Data succesfully added.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> Data succesfully added.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <?php } ?>
             <?php if (isset($_POST['update'])) { ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Success!</strong> Data succesfully updated.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> Data succesfully updated.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <?php } ?>
         </div>
     </div>
@@ -162,7 +162,8 @@ include '../components/header.php';
     <!-- footer -->
     <!-- ============================================================== -->
     <footer class="footer text-center">
-        © 2021 Monster Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
+        © 2021 Monster Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a> Distributed By <a
+            href="https://themewagon.com">ThemeWagon</a>
     </footer>
     <!-- ============================================================== -->
     <!-- End footer -->

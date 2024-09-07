@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2024 at 09:10 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Generation Time: Sep 07, 2024 at 04:28 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -70,10 +70,8 @@ INSERT INTO `tb_karyawan` (`idkaryawan`, `namakaryawan`, `alamat`, `telp`) VALUE
 (3, 'Fernando Simatupang', 'Jalan Nusa Kambangan No 99', '08857491923'),
 (4, 'Arya Faisal', 'Jalan Pulau Ayu No 28', '0883918274'),
 (5, 'Muhammad Sufyan', 'Jalan Teuku Umar No 100', '08977384912'),
-(7, 'Tugus Maha ', 'Jalan Tukad Citarum No 150', '089774928209'),
-(8, 'Ahmad Bin Ali', 'Jalan Tukad Citarum No 99', '089775445567'),
-(9, 'Rajesh Kumar', 'Jalan Drupadi', '083445566908'),
-(10, 'Manuel Sitanggang', 'Jalan Drupadi', '083445566908');
+(6, 'Alif Rizki Raditya', 'Jalan Pulau Bungin No 200', '08749275239'),
+(7, 'Tugus Maha ', 'Jalan Tukad Citarum No 150', '089774928209');
 
 -- --------------------------------------------------------
 
@@ -125,7 +123,8 @@ INSERT INTO `tb_obat` (`id_obat`, `id_supplier`, `namaobat`, `kategoriobat`, `ha
 (2, 2, 'Mixagrip Strip Isi 4 Obat', 'Kaplet', 3200, 3200, 22, 'Indikasi Umum\r\nMenyembuhkan gejala flu seperti bersin-bersin, hidung berair, hidung tersumbat, demam, sakit kepala, dan nyeri otot.\r\n\r\nDeskripsi\r\nMIXAGRIP FLU adalah obat yang digunakan untuk meringankan gejala-gejala flu seperti demam, sakit kepala, hidung tersumbat dan bersin-bersin.\r\n\r\nKategori\r\nBatuk dan Flu\r\n\r\nKomposisi\r\nParacetamol 500 mg, Phenylephrine HCl 15 mg, Chlorpheniramin maleate 2 mg\r\n\r\nDosis\r\nDewasa : 3 - 4 kali per hari 1 - 2 tablet. Anak : 3 - 4 kali per hari 1/2 - 1 tablet\r\n\r\nAturan Pakai\r\nSesudah makan\r\n\r\nKemasan\r\nDus, 25 Catch Cover @ 1 Strip @ 4 kaplet'),
 (3, 3, 'Omeprazole 20 Mg', 'Pil', 5500, 5500, 123, 'Omeprazole obat apa? Omeprazole Novell merupakan obat generik dengan zat aktif Omeprazole yang digunakan untuk mengatasi penyakit-penyakit yang disebabkan oleh kelebihan produksi asam lambung, seperti sakit maag dan tukak lambung.\r\n\r\nMekanisme kerja dari Omeprazole yaitu: • Omeprazole termasuk golongan PPI (Proton Pump Inhibitor) yang efektif bekerja dengan menghambat sekresi asam lambung melalui sistem enzim adenosin trifosfatase hidrogen-kalium (pompa proton) dari sel parietal lambung. \r\n\r\nKomposisi\r\n\r\nOmeprazole\r\n\r\nKemasan\r\n\r\n1 Dos isi 3 Strip x 10 Tablet\r\n\r\nIndikasi / Manfaat / Kegunaan :\r\n\r\nTerapi jangka pendekulkus duodenal dan lambung. Refluks esofagitis, sindroma Zollinger-Ellison\r\n\r\nSub Kategori\r\n\r\nAntasid, Obat Antirefluks & Antiulserasi'),
 (4, 4, 'Panadol Paracetamol Obat', 'Kaplet', 13000, 13000, 12, 'aplet penurun panas dan pereda nyeri yang mengandung parasetamol\r\n• Dapat membantu menurunkan demam\r\n• Dapat membantu meringankan rasa sakit seperti sakit kepala dan sakit gigi\r\n• Dapat membantu meringankan sakit pada otot'),
-(5, 5, 'Dermacolin 10 Tablet', 'Tablet', 7000, 7000, 22, 'Deskripsi DEMACOLIN 10 TABLET merupakan obat yang mengandung Paracetamol, Pseudoephedrine HCl, dan Chlorpheniramine maleat. Obat ini bekerja sebagai analgesik-antipiretik, antihistamin dan dekongestan hidung, dimana obat ini digunakan untuk meringankan gejala flu seperti demam, sakit kepala, hidung tersumbat dan bersin-bersin. Indikasi Umum Obat ini digunakan untuk meringankan gejala flu seperti demam, sakit kepala, hidung tersumbat dan bersin-bersin. Komposisi Paracetamol 500 mg, Pseudoefedrin HCL 7.5 mg, Klorfeniramin maleat 2 mg. Dosis Dewasa : 1 tablet 3 kali per hari. Anak 6-12 tahun : 0.5 tablet 3 kali sehari. Aturan Pakai Sebelum atau sesudah makan. Produsen Coronet Crown Nomor Izin Edar: BPOM: DTL7204217010A1');
+(5, 5, 'Dermacolin 10 Tablet', 'Tablet', 7000, 7000, 22, 'Deskripsi DEMACOLIN 10 TABLET merupakan obat yang mengandung Paracetamol, Pseudoephedrine HCl, dan Chlorpheniramine maleat. Obat ini bekerja sebagai analgesik-antipiretik, antihistamin dan dekongestan hidung, dimana obat ini digunakan untuk meringankan gejala flu seperti demam, sakit kepala, hidung tersumbat dan bersin-bersin. Indikasi Umum Obat ini digunakan untuk meringankan gejala flu seperti demam, sakit kepala, hidung tersumbat dan bersin-bersin. Komposisi Paracetamol 500 mg, Pseudoefedrin HCL 7.5 mg, Klorfeniramin maleat 2 mg. Dosis Dewasa : 1 tablet 3 kali per hari. Anak 6-12 tahun : 0.5 tablet 3 kali sehari. Aturan Pakai Sebelum atau sesudah makan. Produsen Coronet Crown Nomor Izin Edar: BPOM: DTL7204217010A1'),
+(6, 1, 'asd', 'sad', 22233, 2233, 22, 'test');
 
 -- --------------------------------------------------------
 
@@ -215,8 +214,8 @@ INSERT INTO `tb_transaksi` (`idtransaksi`, `idpelanggan`, `idkaryawan`, `tgltran
 --
 ALTER TABLE `tb_detail_transaksi`
   ADD PRIMARY KEY (`iddetailtransaksi`),
-  ADD KEY `FK_idobat` (`idobat`),
-  ADD KEY `FK_idtransaksi` (`idtransaksi`);
+  ADD KEY `FK_idtransaksi` (`idtransaksi`),
+  ADD KEY `FK_idobat` (`idobat`);
 
 --
 -- Indexes for table `tb_karyawan`
@@ -236,7 +235,7 @@ ALTER TABLE `tb_login`
 --
 ALTER TABLE `tb_obat`
   ADD PRIMARY KEY (`id_obat`),
-  ADD KEY `FK_supplier` (`id_supplier`);
+  ADD KEY `supplier` (`id_supplier`);
 
 --
 -- Indexes for table `tb_pelanggan`
@@ -272,7 +271,13 @@ ALTER TABLE `tb_detail_transaksi`
 -- AUTO_INCREMENT for table `tb_karyawan`
 --
 ALTER TABLE `tb_karyawan`
-  MODIFY `idkaryawan` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idkaryawan` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tb_obat`
+--
+ALTER TABLE `tb_obat`
+  MODIFY `id_obat` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_pelanggan`
@@ -307,7 +312,7 @@ ALTER TABLE `tb_login`
 -- Constraints for table `tb_obat`
 --
 ALTER TABLE `tb_obat`
-  ADD CONSTRAINT `FK_supplier` FOREIGN KEY (`id_supplier`) REFERENCES `tb_supplier` (`id_supplier`);
+  ADD CONSTRAINT `supplier` FOREIGN KEY (`id_supplier`) REFERENCES `tb_supplier` (`id_supplier`);
 
 --
 -- Constraints for table `tb_transaksi`
