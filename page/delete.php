@@ -16,4 +16,7 @@ if ($page == "karyawan") {
 } elseif ($page == "obat") {
     $query = mysqli_query($conn, "DELETE FROM tb_obat WHERE id_obat = $id");
     header("Location: obat.php");
+} elseif ($page == "pelanggan") {
+    $query = mysqli_query($conn, "DELETE FROM tb_pelanggan WHERE idpelanggan = $id");
+    header("Location: pelanggan.php");
 }

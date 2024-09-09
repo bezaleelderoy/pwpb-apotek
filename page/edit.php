@@ -9,7 +9,6 @@ if (!isset($_SESSION['loggedin'])) {
 
 $id = $_GET['id'];
 $data = $_GET['data'];
-
 if ($data == "karyawan"){
 
     $query = mysqli_query($conn, "SELECT * FROM tb_karyawan WHERE idkaryawan = $id");
@@ -20,8 +19,8 @@ if ($data == "karyawan"){
         $alamat = $data['alamat'];
         $telp = $data['telp'];
     }
-} else if ($data = "obat") {
-    $query = mysqli_query($conn, "SELECT * FROM tb_obat INNER JOIN tb_supplier ON tb_obat.id_supplier = tb_supplier.id_supplier");
+} else if ($data == "obat") {
+    $query = mysqli_query($conn, "SELECT * FROM tb_obat INNER JOIN tb_supplier ON tb_obat.id_supplier = tb_supplier.id_supplier WHERE id_obat = $id");
     
     while ($data = mysqli_fetch_array($query)) {
         $id = $data['id_obat'];
@@ -33,6 +32,16 @@ if ($data == "karyawan"){
         $hargabeli = $data['hargabeli'];
         $stok_obat = $data['stok_obat'];
         $keterangan = $data['keterangan'];
+    }
+} else if ($data == "pelanggan") {
+    $query = mysqli_query($conn, "SELECT * FROM tb_pelanggan WHERE idpelanggan = $id");
+    while ($data = mysqli_fetch_array($query)) {
+        $id = $data['idpelanggan'];
+        $namalengkap = $data['namalengkap'];
+        $alamat = $data['alamat'];
+        $telp = $data['telp'];
+        $usia = $data['usia'];
+        $buktifotoresep = $data['buktifotoresep'];
     }
 }
 
@@ -108,14 +117,15 @@ if ($data == "karyawan"){
                         </form>
                         <?php } else if ($page == "obat") { ?>
                         <form action="obat.php" method="post">
+                            <input type="hidden" name="id_obat" value="<?php echo $id ?>">
                             <div class="mb-3">
                                 <label class="form-label">Nama Obat</label>
                                 <input name="namaobat" type="text" class="form-control" value="<?php echo $namaobat ?>">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Supplier</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected value="<?php echo $id_supplier?>"><?php echo $perusahaan?></option>
+                                <select class="form-select" aria-label="Default select example" name="id_supplier">
+                                    <option selected>Supplier</option>
                                     <?php 
                                 
                                     $query = mysqli_query($conn, "SELECT * FROM tb_obat INNER JOIN tb_supplier ON tb_obat.id_supplier = tb_supplier.id_supplier");
@@ -151,31 +161,32 @@ if ($data == "karyawan"){
                                 <label class="form-label">Keterangan</label>
                                 <textarea name="keterangan" class="form-control"><?php echo $keterangan?></textarea>
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="update" class="btn btn-primary">Submit</button>
                         </form>
                         <?php } else if ($page == "pelanggan") { ?>
-                        <form action="pelanggan.php" method="post">
+                        <form action="pelanggan.php" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="idpelanggan" value="<?php echo $id ?>">
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
-                                <input name="namalengkap" type="text" class="form-control">
+                                <input name="namalengkap" type="text" class="form-control" value="<?php echo $namalengkap?>">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Alamat</label>
-                                <textarea name="alamat" class="form-control"></textarea>
+                                <textarea name="alamat" class="form-control"><?= $alamat?></textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Telp</label>
-                                <input name="telp" type="number" class="form-control">
+                                <input name="telp" type="number" class="form-control" value="<?= $telp?>">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Usia</label>
-                                <input name="usia" type="number" class="form-control">
+                                <input name="usia" type="number" class="form-control" value="<?= $usia?>">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Bukti Foto Resep</label>
                                 <input name="buktifotoresep" type="file" class="form-control">
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="update" class="btn btn-primary">Submit</button>
                         </form>
                         <?php } else if ($page == "supplier") {?>
                         <form action="supplier.php" method="post">
@@ -195,7 +206,7 @@ if ($data == "karyawan"){
                                 <label class="form-label">Keterangan</label>
                                 <textarea name="keterangan" class="form-control"></textarea>
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="update" class="btn btn-primary">Submit</button>
                         </form>
                         <?php } else if ($page == "users") {?>
                         <form action="users.php" method="post">

@@ -10,12 +10,13 @@ if (!isset($_SESSION['loggedin'])) {
 
 if (isset($_POST['submit'])) {
 
-    $namakaryawan = $_POST['namakaryawan'];
-    $alamat = $_POST['alamat'];
+    $perusahaan = $_POST['perusahaan'];
     $telp = $_POST['telp'];
+    $alamat = $_POST['alamat'];
+    $keterangan = $_POST['keterangan'];
 
 
-    $insert = mysqli_query($conn, "INSERT INTO tb_karyawan VALUES (NULL, '$namakaryawan', '$alamat', '$telp')");
+    $query = mysqli_query($conn, "INSERT INTO tb_supplier VALUES (NULL, '$perusahaan', '$telp', '$alamat', '$keterangan')");
 }
 
 if (isset($_POST['update'])) {

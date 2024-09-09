@@ -19,16 +19,22 @@ if (isset($_POST['submit'])) {
 
     move_uploaded_file($img, "img/".$buktifotoresep);
 
-    $insert = mysqli_query($conn, "INSERT INTO tb_pelanggan VALUES (NULL, '$namalengkap', '$alamat', '$telp', $usia, '$buktifotoresep')");
+    $query = mysqli_query($conn, "INSERT INTO tb_pelanggan VALUES (NULL, '$namalengkap', '$alamat', '$telp', $usia, '$buktifotoresep')");
 }
 
 if (isset($_POST['update'])) {
-    $idkaryawan = $_POST['idkaryawan'];
-    $namakaryawan = $_POST['namakaryawan'];
+    $idpelanggan = $_POST['idpelanggan'];
+    $namalengkap = $_POST['namalengkap'];
     $alamat = $_POST['alamat'];
     $telp = $_POST['telp'];
+    $usia = $_POST['usia'];
+    $buktifotoresep = $_FILES['buktifotoresep']['name'];
+    $img = $_FILES['buktifotoresep']['tmp_name'];
 
-    $query = mysqli_query($conn, "UPDATE tb_karyawan SET namakaryawan = '$namakaryawan', alamat = '$alamat', telp = '$telp' WHERE idkaryawan = $idkaryawan");
+    move_uploaded_file($img, "img/".$buktifotoresep);
+
+
+    $query = mysqli_query($conn, "UPDATE tb_pelanggan SET namalengkap = '$namalengkap', alamat = '$alamat', telp = '$telp', usia = $usia, buktifotoresep = '$buktifotoresep' WHERE idpelanggan = $idpelanggan");
 }
 
 include '../components/header.php';

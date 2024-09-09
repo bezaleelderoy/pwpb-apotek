@@ -22,12 +22,16 @@ if (isset($_POST['submit'])) {
 }
 
 if (isset($_POST['update'])) {
-    $idkaryawan = $_POST['idkaryawan'];
-    $namakaryawan = $_POST['namakaryawan'];
-    $alamat = $_POST['alamat'];
-    $telp = $_POST['telp'];
+    $id_obat = $_POST['id_obat'];
+    $id_supplier = $_POST['id_supplier'];
+    $namaobat = $_POST['namaobat'];
+    $kategoriobat = $_POST['kategoriobat'];
+    $hargajual = $_POST['hargajual'];
+    $hargabeli = $_POST['hargabeli'];
+    $stok_obat = $_POST['stok_obat'];
+    $keterangan = $_POST['keterangan'];
 
-    $query = mysqli_query($conn, "UPDATE tb_karyawan SET namakaryawan = '$namakaryawan', alamat = '$alamat', telp = '$telp' WHERE idkaryawan = $idkaryawan");
+    $query = mysqli_query($conn, "UPDATE tb_obat SET id_supplier = $id_supplier, namaobat = '$namaobat', kategoriobat = '$kategoriobat', hargajual = $hargajual, hargabeli = $hargabeli, stok_obat = $stok_obat, keterangan = '$keterangan' WHERE id_obat = $id_obat");
 }
 
 include '../components/header.php';
