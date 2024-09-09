@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2024 at 05:02 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Generation Time: Sep 09, 2024 at 02:58 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -34,7 +35,7 @@ CREATE TABLE `tb_detail_transaksi` (
   `jumlah` int(3) NOT NULL,
   `hargasatuan` double NOT NULL,
   `totalharga` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_detail_transaksi`
@@ -58,7 +59,7 @@ CREATE TABLE `tb_karyawan` (
   `namakaryawan` varchar(50) NOT NULL,
   `alamat` varchar(100) NOT NULL,
   `telp` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_karyawan`
@@ -84,7 +85,7 @@ CREATE TABLE `tb_login` (
   `password` varchar(65) NOT NULL,
   `leveluser` varchar(50) NOT NULL,
   `idkaryawan` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_login`
@@ -112,7 +113,7 @@ CREATE TABLE `tb_obat` (
   `hargabeli` double NOT NULL,
   `stok_obat` int(11) NOT NULL,
   `keterangan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_obat`
@@ -124,7 +125,7 @@ INSERT INTO `tb_obat` (`id_obat`, `id_supplier`, `namaobat`, `kategoriobat`, `ha
 (3, 3, 'Omeprazole 20 Mg', 'Pil', 5500, 5500, 123, 'Omeprazole obat apa? Omeprazole Novell merupakan obat generik dengan zat aktif Omeprazole yang digunakan untuk mengatasi penyakit-penyakit yang disebabkan oleh kelebihan produksi asam lambung, seperti sakit maag dan tukak lambung.\r\n\r\nMekanisme kerja dari Omeprazole yaitu: • Omeprazole termasuk golongan PPI (Proton Pump Inhibitor) yang efektif bekerja dengan menghambat sekresi asam lambung melalui sistem enzim adenosin trifosfatase hidrogen-kalium (pompa proton) dari sel parietal lambung. \r\n\r\nKomposisi\r\n\r\nOmeprazole\r\n\r\nKemasan\r\n\r\n1 Dos isi 3 Strip x 10 Tablet\r\n\r\nIndikasi / Manfaat / Kegunaan :\r\n\r\nTerapi jangka pendekulkus duodenal dan lambung. Refluks esofagitis, sindroma Zollinger-Ellison\r\n\r\nSub Kategori\r\n\r\nAntasid, Obat Antirefluks & Antiulserasi'),
 (4, 4, 'Panadol Paracetamol Obat', 'Kaplet', 13000, 13000, 12, 'aplet penurun panas dan pereda nyeri yang mengandung parasetamol\r\n• Dapat membantu menurunkan demam\r\n• Dapat membantu meringankan rasa sakit seperti sakit kepala dan sakit gigi\r\n• Dapat membantu meringankan sakit pada otot'),
 (5, 5, 'Dermacolin 10 Tablet', 'Tablet', 7000, 7000, 22, 'Deskripsi DEMACOLIN 10 TABLET merupakan obat yang mengandung Paracetamol, Pseudoephedrine HCl, dan Chlorpheniramine maleat. Obat ini bekerja sebagai analgesik-antipiretik, antihistamin dan dekongestan hidung, dimana obat ini digunakan untuk meringankan gejala flu seperti demam, sakit kepala, hidung tersumbat dan bersin-bersin. Indikasi Umum Obat ini digunakan untuk meringankan gejala flu seperti demam, sakit kepala, hidung tersumbat dan bersin-bersin. Komposisi Paracetamol 500 mg, Pseudoefedrin HCL 7.5 mg, Klorfeniramin maleat 2 mg. Dosis Dewasa : 1 tablet 3 kali per hari. Anak 6-12 tahun : 0.5 tablet 3 kali sehari. Aturan Pakai Sebelum atau sesudah makan. Produsen Coronet Crown Nomor Izin Edar: BPOM: DTL7204217010A1'),
-(6, 1, 'asd', 'sad', 22233, 2233, 22, 'test');
+(6, 4, 'Wawad', 'test', 12000, 15000, 22, 'Test');
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,7 @@ CREATE TABLE `tb_pelanggan` (
   `telp` varchar(15) NOT NULL,
   `usia` int(3) NOT NULL,
   `buktifotoresep` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_pelanggan`
@@ -150,8 +151,9 @@ INSERT INTO `tb_pelanggan` (`idpelanggan`, `namalengkap`, `alamat`, `telp`, `usi
 (2, 'Aurelio Fransiskus Sinarta', 'Jalan Pulau Ayu No 27', '08771298334', 17, '93840.jpeg'),
 (3, 'Muhammad Jaffan Hanindito', 'Jalan Patih Jelantik', '08744219335', 18, '759819.jpeg'),
 (4, 'M. Hidayatullah', 'Jalan Nangka Selatan No 90', '08774912398', 20, '38520.jpeg'),
-(5, 'Henri Saputra', 'Jl Pulau Buton No 100', '089371274945', 18, 'asdjoa.jpeg'),
-(6, 'Waswas', 'Jalan Tukad Citarum', '08793845566', 33, 'PHP-logo.svg-removebg-preview.png');
+(5, 'Henri Saputra', 'Jl Pulau Buton No 100', '089371274945', 18, 'icons8-valorant-96.png'),
+(14, 'Munir Said bin Thalib', 'Jalan Tukad Citarum', '08793845566', 33, 'heatsink.jpg'),
+(17, 'Sadewa Bharaka', 'Jalan Tukad Citarum', '08793845566', 33, '116-1164164_logo-router-packet-tracer-hd-png-download.png');
 
 -- --------------------------------------------------------
 
@@ -165,7 +167,7 @@ CREATE TABLE `tb_supplier` (
   `telp` varchar(20) NOT NULL,
   `alamat` text NOT NULL,
   `keterangan` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_supplier`
@@ -176,7 +178,8 @@ INSERT INTO `tb_supplier` (`id_supplier`, `perusahaan`, `telp`, `alamat`, `keter
 (2, 'PT Kimia Farma', '087722388991', 'Jalan Tukad Citarum No 2 Denpasar Selatan', 'supplier obat sirup'),
 (3, 'PT Rajawali Obat', '087733992299', 'Jalan Tukad Citarum No 30 Denpasar', 'supplir obat pak rusdi\r\n'),
 (4, 'PT Fransiskus Abadi', '083199988774', 'Jalan Pulau Bungin No 24', 'supplier obat'),
-(5, 'PT Indobat', '08887722883', 'Jalan Raya Kuta no 151', 'obat obatan');
+(5, 'PT Indobat', '08887722883', 'Jalan Raya Kuta no 151', 'obat obatan'),
+(6, 'PT Global Digital Verse', '08749212345', 'Jalan Byps', 'test');
 
 -- --------------------------------------------------------
 
@@ -193,7 +196,7 @@ CREATE TABLE `tb_transaksi` (
   `totalbayar` double NOT NULL,
   `bayar` double NOT NULL,
   `kembali` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_transaksi`
@@ -278,13 +281,19 @@ ALTER TABLE `tb_karyawan`
 -- AUTO_INCREMENT for table `tb_obat`
 --
 ALTER TABLE `tb_obat`
-  MODIFY `id_obat` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_obat` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
-  MODIFY `idpelanggan` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idpelanggan` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `tb_supplier`
+--
+ALTER TABLE `tb_supplier`
+  MODIFY `id_supplier` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi`
@@ -313,7 +322,7 @@ ALTER TABLE `tb_login`
 -- Constraints for table `tb_obat`
 --
 ALTER TABLE `tb_obat`
-  ADD CONSTRAINT `supplier` FOREIGN KEY (`id_supplier`) REFERENCES `tb_supplier` (`id_supplier`);
+  ADD CONSTRAINT `FK_supplier` FOREIGN KEY (`id_supplier`) REFERENCES `tb_supplier` (`id_supplier`);
 
 --
 -- Constraints for table `tb_transaksi`
