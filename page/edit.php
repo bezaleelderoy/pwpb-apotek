@@ -9,6 +9,8 @@ if (!isset($_SESSION['loggedin'])) {
 
 $id = $_GET['id'];
 $data = $_GET['data'];
+
+
 if ($data == "karyawan"){
 
     $query = mysqli_query($conn, "SELECT * FROM tb_karyawan WHERE idkaryawan = $id");
@@ -51,6 +53,14 @@ if ($data == "karyawan"){
         $telp = $data['telp'];
         $alamat = $data['alamat'];
         $keterangan = $data['keterangan'];
+    }
+} else if ($data == "users") {
+    $query = mysqli_query($conn, "SELECT * FROM tb_login WHERE username = '$id'");
+    while ($data = mysqli_fetch_array($query)) {
+        $username = $data['username'];
+        $password = $data['password'];
+        $leveluser = $data['leveluser'];
+        $idkaryawan = $data['idkaryawan'];
     }
 }
 
@@ -222,11 +232,11 @@ if ($data == "karyawan"){
                         <form action="users.php" method="post">
                             <div class="mb-3">
                                 <label class="form-label">Username</label>
-                                <input name="username" type="text" class="form-control">
+                                <input value="<?= $username ?>" name="username" type="text" class="form-control" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Password</label>
-                                <input name="password" type="text" class="form-control">
+                                <input value="<?= $password ?>" name="password" type="text" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Level User</label>
@@ -243,7 +253,7 @@ if ($data == "karyawan"){
                                     <option selected>Nama</option>
                                     <?php 
                                 
-                                    $query = mysqli_query($conn, "SELECT * FROM tb_karyawan FULL JOIN tb_login");
+                                    $query = mysqli_query($conn, "SELECT * FROM tb_karyawan");
                                     
                                     
                                     while ($data = mysqli_fetch_array($query)){

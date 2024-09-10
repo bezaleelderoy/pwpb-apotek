@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
     $idkaryawan = $_POST['idkaryawan'];
 
 
-    $insert = mysqli_query($conn, "INSERT INTO tb_login VALUES (NULL, '$username', '$password', '$leveluser', $idkaryawan)");
+    $insert = mysqli_query($conn, "INSERT INTO tb_login VALUES ('$username', '$password', '$leveluser', $idkaryawan)");
 }
 
 if (isset($_POST['update'])) {

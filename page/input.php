@@ -188,7 +188,7 @@ include '../components/header.php'; ?>
                                     <option selected>Nama</option>
                                     <?php 
                                 
-                                    $query = mysqli_query($conn, "SELECT * FROM tb_login INNER JOIN tb_karyawan ON tb_login.idkaryawan = tb_karyawan.idkaryawan");
+                                    $query = mysqli_query($conn, "SELECT * FROM tb_karyawan ");
                                     
                                     while ($data = mysqli_fetch_array($query)){
                                         echo "<option value='$data[idkaryawan]' name='idkaryawan'>$data[namakaryawan]</option>";

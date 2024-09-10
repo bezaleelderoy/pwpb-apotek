@@ -22,4 +22,7 @@ if ($page == "karyawan") {
 } elseif ($page == "supplier") {
     $query = mysqli_query($conn, "DELETE FROM tb_supplier WHERE id_supplier = $id");
     header("Location: supplier.php");
+} elseif ($page == "users") {
+    $query = mysqli_query($conn, "DELETE FROM tb_login WHERE username = '$id'");
+    header("Location: users.php");
 }
