@@ -175,7 +175,7 @@ include '../components/header.php'; ?>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Level User</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" aria-label="Default select example" name="leveluser">
                                     <option selected>Open this select menu</option>
                                     <option value="Admin">Admin</option>
                                     <option value="Editor">Editor</option>
@@ -184,7 +184,7 @@ include '../components/header.php'; ?>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Karyawan</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" aria-label="Default select example" name="idkaryawan">
                                     <option selected>Nama</option>
                                     <?php 
                                 

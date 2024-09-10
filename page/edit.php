@@ -43,6 +43,15 @@ if ($data == "karyawan"){
         $usia = $data['usia'];
         $buktifotoresep = $data['buktifotoresep'];
     }
+} else if ($data == "supplier") {
+    $query = mysqli_query($conn, "SELECT * FROM tb_supplier WHERE id_supplier = $id");
+    while ($data = mysqli_fetch_array($query)) {
+        $id = $data['id_supplier'];
+        $perusahaan = $data['perusahaan'];
+        $telp = $data['telp'];
+        $alamat = $data['alamat'];
+        $keterangan = $data['keterangan'];
+    }
 }
 
 
@@ -190,21 +199,22 @@ if ($data == "karyawan"){
                         </form>
                         <?php } else if ($page == "supplier") {?>
                         <form action="supplier.php" method="post">
+                            <input type="hidden" name="id_supplier" value="<?php echo $id ?>">
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
-                                <input name="perusahaan" type="text" class="form-control">
+                                <input value="<?= $perusahaan?>" name="perusahaan" type="text" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Telepon</label>
-                                <input name="telp" type="number" class="form-control">
+                                <input value="<?= $telp?>" name="telp" type="number" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Alamat</label>
-                                <textarea name="alamat" class="form-control"></textarea>
+                                <textarea name="alamat" class="form-control"><?= $alamat?></textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Keterangan</label>
-                                <textarea name="keterangan" class="form-control"></textarea>
+                                <textarea name="keterangan" class="form-control"><?= $keterangan?></textarea>
                             </div>
                             <button type="submit" name="update" class="btn btn-primary">Submit</button>
                         </form>
@@ -233,12 +243,14 @@ if ($data == "karyawan"){
                                     <option selected>Nama</option>
                                     <?php 
                                 
-                                    $query = mysqli_query($conn, "SELECT * FROM tb_login INNER JOIN tb_karyawan ON tb_login.idkaryawan = tb_karyawan.idkaryawan");
+                                    $query = mysqli_query($conn, "SELECT * FROM tb_karyawan FULL JOIN tb_login");
+                                    
                                     
                                     while ($data = mysqli_fetch_array($query)){
                                         echo "<option value='$data[idkaryawan]' name='idkaryawan'>$data[namakaryawan]</option>";
                                     }
-                                
+                                    
+
                                     ?>
                                 </select>
                             </div>

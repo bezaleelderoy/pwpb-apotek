@@ -20,12 +20,13 @@ if (isset($_POST['submit'])) {
 }
 
 if (isset($_POST['update'])) {
-    $idkaryawan = $_POST['idkaryawan'];
-    $namakaryawan = $_POST['namakaryawan'];
-    $alamat = $_POST['alamat'];
+    $id_supplier = $_POST['id_supplier'];
+    $perusahaan = $_POST['perusahaan'];
     $telp = $_POST['telp'];
+    $alamat = $_POST['alamat'];
+    $keterangan = $_POST['keterangan'];
 
-    $query = mysqli_query($conn, "UPDATE tb_karyawan SET namakaryawan = '$namakaryawan', alamat = '$alamat', telp = '$telp' WHERE idkaryawan = $idkaryawan");
+    $query = mysqli_query($conn, "UPDATE tb_supplier SET perusahaan = '$perusahaan', telp = '$telp', alamat = '$alamat', keterangan = '$keterangan'  WHERE id_supplier = $id_supplier");
 }
 
 include '../components/header.php';

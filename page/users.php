@@ -10,12 +10,13 @@ if (!isset($_SESSION['loggedin'])) {
 
 if (isset($_POST['submit'])) {
 
-    $namakaryawan = $_POST['namakaryawan'];
-    $alamat = $_POST['alamat'];
-    $telp = $_POST['telp'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $leveluser = $_POST['leveluser'];
+    $idkaryawan = $_POST['idkaryawan'];
 
 
-    $insert = mysqli_query($conn, "INSERT INTO tb_karyawan VALUES (NULL, '$namakaryawan', '$alamat', '$telp')");
+    $insert = mysqli_query($conn, "INSERT INTO tb_login VALUES (NULL, '$username', '$password', '$leveluser', $idkaryawan)");
 }
 
 if (isset($_POST['update'])) {
