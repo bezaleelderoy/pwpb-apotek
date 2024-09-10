@@ -26,3 +26,6 @@ if ($page == "karyawan") {
     $query = mysqli_query($conn, "DELETE FROM tb_login WHERE username = '$id'");
     header("Location: users.php");
 }
+
+
+// $query = mysqli_query($conn, "DELETE FROM tb_$page WHERE id")

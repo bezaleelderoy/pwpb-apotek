@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2024 at 02:58 AM
+-- Generation Time: Sep 10, 2024 at 03:30 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -92,6 +92,7 @@ CREATE TABLE `tb_login` (
 --
 
 INSERT INTO `tb_login` (`username`, `password`, `leveluser`, `idkaryawan`) VALUES
+('2gus', 'admin', 'Admin', 7),
 ('arya.faisal', 'admin123', 'Admin', 4),
 ('fernandos', 'admin123', 'Admin', 3),
 ('iqbal123', 'iqbal123', 'Admin', 1),
@@ -179,7 +180,7 @@ INSERT INTO `tb_supplier` (`id_supplier`, `perusahaan`, `telp`, `alamat`, `keter
 (3, 'PT Rajawali Obat', '087733992299', 'Jalan Tukad Citarum No 30 Denpasar', 'supplir obat pak rusdi\r\n'),
 (4, 'PT Fransiskus Abadi', '083199988774', 'Jalan Pulau Bungin No 24', 'supplier obat'),
 (5, 'PT Indobat', '08887722883', 'Jalan Raya Kuta no 151', 'obat obatan'),
-(6, 'PT Global Digital Verse', '08749212345', 'Jalan Byps', 'test');
+(6, 'PT Global Digital Verse', '08749212345', 'Jalan Pulau Ayu', 'Obat Herbal');
 
 -- --------------------------------------------------------
 
@@ -293,7 +294,7 @@ ALTER TABLE `tb_pelanggan`
 -- AUTO_INCREMENT for table `tb_supplier`
 --
 ALTER TABLE `tb_supplier`
-  MODIFY `id_supplier` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_supplier` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi`
@@ -309,27 +310,27 @@ ALTER TABLE `tb_transaksi`
 -- Constraints for table `tb_detail_transaksi`
 --
 ALTER TABLE `tb_detail_transaksi`
-  ADD CONSTRAINT `FK_idobat` FOREIGN KEY (`idobat`) REFERENCES `tb_obat` (`id_obat`),
-  ADD CONSTRAINT `FK_idtransaksi` FOREIGN KEY (`idtransaksi`) REFERENCES `tb_transaksi` (`idtransaksi`);
+  ADD CONSTRAINT `FK_idobat` FOREIGN KEY (`idobat`) REFERENCES `tb_obat` (`id_obat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_idtransaksi` FOREIGN KEY (`idtransaksi`) REFERENCES `tb_transaksi` (`idtransaksi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_login`
 --
 ALTER TABLE `tb_login`
-  ADD CONSTRAINT `FK_login` FOREIGN KEY (`idkaryawan`) REFERENCES `tb_karyawan` (`idkaryawan`);
+  ADD CONSTRAINT `FK_login` FOREIGN KEY (`idkaryawan`) REFERENCES `tb_karyawan` (`idkaryawan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_obat`
 --
 ALTER TABLE `tb_obat`
-  ADD CONSTRAINT `FK_supplier` FOREIGN KEY (`id_supplier`) REFERENCES `tb_supplier` (`id_supplier`);
+  ADD CONSTRAINT `FK_supplier` FOREIGN KEY (`id_supplier`) REFERENCES `tb_supplier` (`id_supplier`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  ADD CONSTRAINT `FK_karyawan` FOREIGN KEY (`idkaryawan`) REFERENCES `tb_karyawan` (`idkaryawan`),
-  ADD CONSTRAINT `FK_pelanggan` FOREIGN KEY (`idpelanggan`) REFERENCES `tb_pelanggan` (`idpelanggan`);
+  ADD CONSTRAINT `FK_karyawan` FOREIGN KEY (`idkaryawan`) REFERENCES `tb_karyawan` (`idkaryawan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_pelanggan` FOREIGN KEY (`idpelanggan`) REFERENCES `tb_pelanggan` (`idpelanggan`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
