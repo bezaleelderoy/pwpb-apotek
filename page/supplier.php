@@ -15,7 +15,8 @@ if (isset($_POST['submit'])) {
     $alamat = $_POST['alamat'];
     $keterangan = $_POST['keterangan'];
 
-
+    
+    
     $query = mysqli_query($conn, "INSERT INTO tb_supplier VALUES (NULL, '$perusahaan', '$telp', '$alamat', '$keterangan')");
 }
 

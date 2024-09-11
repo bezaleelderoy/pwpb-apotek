@@ -20,12 +20,14 @@ if (isset($_POST['submit'])) {
 }
 
 if (isset($_POST['update'])) {
+    
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $leveluser = $_POST['leveluser'];
     $idkaryawan = $_POST['idkaryawan'];
-    $namakaryawan = $_POST['namakaryawan'];
-    $alamat = $_POST['alamat'];
-    $telp = $_POST['telp'];
 
-    $query = mysqli_query($conn, "UPDATE tb_karyawan SET namakaryawan = '$namakaryawan', alamat = '$alamat', telp = '$telp' WHERE idkaryawan = $idkaryawan");
+
+    $query = mysqli_query($conn, "UPDATE tb_login SET password = '$password', leveluser = '$leveluser', idkaryawan = $idkaryawan WHERE username =  '$username'");
 }
 
 include '../components/header.php';

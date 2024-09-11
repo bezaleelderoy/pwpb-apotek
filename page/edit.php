@@ -187,7 +187,8 @@ if ($data == "karyawan"){
                             <input type="hidden" name="idpelanggan" value="<?php echo $id ?>">
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
-                                <input name="namalengkap" type="text" class="form-control" value="<?php echo $namalengkap?>">
+                                <input name="namalengkap" type="text" class="form-control"
+                                    value="<?php echo $namalengkap?>">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Alamat</label>
@@ -232,7 +233,9 @@ if ($data == "karyawan"){
                         <form action="users.php" method="post">
                             <div class="mb-3">
                                 <label class="form-label">Username</label>
-                                <input value="<?= $username ?>" name="username" type="text" class="form-control" disabled>
+                                <input value="<?= $username ?>" name="username" type="text" class="form-control"
+                                    disabled>
+                                <input value="<?= $username ?>" name="username" type="text" class="form-control" hidden>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Password</label>
@@ -240,7 +243,7 @@ if ($data == "karyawan"){
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Level User</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select name="leveluser" class="form-select" aria-label="Default select example">
                                     <option selected>Open this select menu</option>
                                     <option value="Admin">Admin</option>
                                     <option value="Editor">Editor</option>
@@ -249,7 +252,7 @@ if ($data == "karyawan"){
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Karyawan</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select name="idkaryawan" class="form-select" aria-label="Default select example">
                                     <option selected>Nama</option>
                                     <?php 
                                 
@@ -264,7 +267,7 @@ if ($data == "karyawan"){
                                     ?>
                                 </select>
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="update" class="btn btn-primary">Submit</button>
                         </form>
                         <?php }?>
                     </div>
