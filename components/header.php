@@ -105,20 +105,19 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <?php
-
-                                if ($_SESSION['loggedin'] = true) {
-                                    echo $_SESSION['name'];
-                                    ?>
-
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown"
                                 data-bs-toggle="dropdown">
                                 <img src="./assets/images/users/1.jpg" alt="user" class="profile-pic me-2">
-                            </a>
-                            <?php
-                            }
+                                <?php
 
-                            ?>
+                                if ($_SESSION['loggedin'] = true) {
+                                    echo $_SESSION['name'];
+                                } else {
+                                    echo " ";
+                                }
+
+                                ?>
+                            </a>
                             <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>

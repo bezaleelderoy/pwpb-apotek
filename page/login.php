@@ -11,7 +11,6 @@ if (isset($_POST['login'])) {
 
     $query = mysqli_query($conn, "SELECT * FROM tb_login WHERE username = '$username' AND password = '$password'");
 
-    var_dump($query);
 
     if (mysqli_num_rows($query) > 0) {
         session_start();
@@ -69,7 +68,8 @@ include '../components/header.php';
                         <form action="login.php" method="post">
                             <div class="mb-3">
                                 <label class="form-label">Username</label>
-                                <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <input name="username" type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp">
                                 <div id="emailHelp" class="form-text">Mohon menggunakan nama lengkap.</div>
                             </div>
                             <div class="mb-3">
@@ -101,7 +101,8 @@ include '../components/header.php';
     <!-- footer -->
     <!-- ============================================================== -->
     <footer class="footer text-center">
-        © 2021 Monster Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
+        © 2021 Monster Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a> Distributed By <a
+            href="https://themewagon.com">ThemeWagon</a>
     </footer>
     <!-- ============================================================== -->
     <!-- End footer -->
