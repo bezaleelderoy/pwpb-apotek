@@ -158,7 +158,7 @@
                                 href="users.php" aria-expanded="false"><i class="me-3 fa fa-columns"
                                     aria-hidden="true"></i><span class="hide-menu">Users</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="logout.php" aria-expanded="false"><i class="me-3 fa fa-info-circle"
+                                href="login/logout.php" aria-expanded="false"><i class="me-3 fa fa-info-circle"
                                     aria-hidden="true"></i><span class="hide-menu">Logout</span></a></li>
 
                     </ul>

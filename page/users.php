@@ -3,7 +3,7 @@
 include('../config/conn.php');
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: login.php');
+    header('Location: login/login.php');
     exit;
 }
 
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
 }
 
 if (isset($_POST['update'])) {
-    
+
     $username = $_POST['username'];
     $password = $_POST['password'];
     $leveluser = $_POST['leveluser'];
@@ -54,16 +54,16 @@ include '../components/header.php';
                 </div>
             </div>
             <?php if (isset($_POST['submit'])) { ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Success!</strong> Data succesfully added.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success!</strong> Data succesfully added.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             <?php } ?>
             <?php if (isset($_POST['update'])) { ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Success!</strong> Data succesfully updated.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success!</strong> Data succesfully updated.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             <?php } ?>
         </div>
     </div>
@@ -74,7 +74,7 @@ include '../components/header.php';
     <!-- Container fluid  -->
     <!-- ============================================================== -->
     <div class="container-fluid">
-        <a href="input.php?data=users" class="btn btn-primary mb-2">Insert data</a>
+        <a href="crud/input.php?data=users" class="btn btn-primary mb-2">Insert data</a>
         <!-- ============================================================== -->
         <!-- Start Page Content -->
         <!-- ============================================================== -->
@@ -112,7 +112,7 @@ include '../components/header.php';
                                         echo "<td>" . $data['password'] . "</td>";
                                         echo "<td>" . $data['leveluser'] . "</td>";
                                         echo "<td>" . $data['namakaryawan'] . "</td>";
-                                        echo "<td><a href='edit.php?id=" . $data['username'] . "&data=users' type='button' class='btn btn-warning'><i class='bi bi-pencil-square'></i></a></td>";
+                                        echo "<td><a href='crud/edit.php?id=" . $data['username'] . "&data=users' type='button' class='btn btn-warning'><i class='bi bi-pencil-square'></i></a></td>";
                                         echo "<td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#" . $modalId . "'><i class='bi bi-trash'></i></button></td>";
                                         echo "<div class='modal fade' id='" . $modalId . "' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
                                                  <div class='modal-dialog'>
@@ -124,7 +124,7 @@ include '../components/header.php';
                                                              Apakah anda ingin menghapus data $data[username] ? Aksi ini <strong> TIDAK DAPAT </strong> dibatalkan!
                                                          </div>
                                                          <div class='modal-footer'>
-                                                             <a href='delete.php?id=" . $data['username'] . "&data=users' class='btn btn-danger text-light'>HAPUS</a>
+                                                             <a href='crud/delete.php?id=" . $data['username'] . "&data=users' class='btn btn-danger text-light'>HAPUS</a>
                                                              <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Batal</button>
                                                          </div>
                                                      </div>

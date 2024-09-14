@@ -3,7 +3,7 @@
 include('../config/conn.php');
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: login.php');
+    header('Location: login/login.php');
     exit;
 }
 
@@ -125,6 +125,7 @@ include '../components/header.php';
                                     $query = mysqli_query($conn, "SELECT * FROM tb_transaksi INNER JOIN tb_pelanggan ON tb_transaksi.idpelanggan = tb_pelanggan.idpelanggan INNER JOIN tb_karyawan ON tb_transaksi.idkaryawan = tb_karyawan.idkaryawan INNER JOIN tb_detail_transaksi ON tb_transaksi.idtransaksi = tb_detail_transaksi.idtransaksi");
 
                                     while ($data = mysqli_fetch_assoc($query)) {
+                                        $modalId = 'staticBackdrop' . $data['idtransaksi'];
                                     ?>
                                         <tr>
                                             <td><?= $no++ ?></td>
@@ -132,7 +133,25 @@ include '../components/header.php';
                                             <td class="align-middle"><?= $data['namalengkap'] ?></td>
                                             <td class="align-middle"><?= $data['namakaryawan'] ?></td>
                                             <td class="align-middle"><?= $data['totalharga'] ?></td>
-                                            <td class="align-middle"><button class="btn btn-primary">...</button></td>
+                                            <td class="align-middle"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<?= $modalId ?>">...</button></td>
+
+                                            <div class="modal fade" id="<?= $modalId ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel"><?= $data['namalengkap'] ?></h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            ...
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Understood</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </tr>
                                     <?php
                                     }
