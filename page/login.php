@@ -16,7 +16,7 @@ if (isset($_POST['login'])) {
         session_start();
         $_SESSION['loggedin'] = TRUE;
         $_SESSION['name'] = $_POST['username'];
-        header("Location: karyawan.php");
+        header("Location: index.php");
     } else {
         header("Location: login.php");
     }
