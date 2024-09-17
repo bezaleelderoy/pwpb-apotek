@@ -1,6 +1,6 @@
 <?php
 
-include('../../config/conn.php');
+include('../config/conn.php');
 
 
 if (isset($_POST['login'])) {
@@ -16,7 +16,7 @@ if (isset($_POST['login'])) {
         session_start();
         $_SESSION['loggedin'] = TRUE;
         $_SESSION['name'] = $_POST['username'];
-        header("Location: ../index.php");
+        header("Location: index.php");
     } else {
         header("Location: login.php");
     }

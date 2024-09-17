@@ -106,7 +106,7 @@ include '../components/header.php';
                                 </select>
                             </div>
                         </div>
-                        <button class="btn btn-success mt-2 text-white">New transaction</button>
+                        <a href="input.php?data=transaksi" class="btn btn-success mt-2 text-white">New transaction</a>
                         <div class="table-responsive mt-2">
                             <table class="table stylish-table no-wrap">
                                 <thead>

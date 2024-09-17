@@ -74,7 +74,7 @@ include '../components/header.php';
     <!-- Container fluid  -->
     <!-- ============================================================== -->
     <div class="container-fluid">
-        <a href="crud/input.php?data=supplier" class="btn btn-primary mb-2">Insert data</a>
+        <a href="input.php?data=supplier" class="btn btn-primary mb-2">Insert data</a>
         <!-- ============================================================== -->
         <!-- Start Page Content -->
         <!-- ============================================================== -->
@@ -112,7 +112,7 @@ include '../components/header.php';
                                         echo "<td>" . $data['telp'] . "</td>";
                                         echo "<td>" . $data['alamat'] . "</td>";
                                         echo "<td>" . $data['keterangan'] . "</td>";
-                                        echo "<td><a href='crud/edit.php?id=" . $data['id_supplier'] . "&data=supplier' type='button' class='btn btn-warning'><i class='bi bi-pencil-square'></i></a></td>";
+                                        echo "<td><a href='edit.php?id=" . $data['id_supplier'] . "&data=supplier' type='button' class='btn btn-warning'><i class='bi bi-pencil-square'></i></a></td>";
                                         echo "<td><button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#" . $modalId . "'><i class='bi bi-trash'></i></button></td>";
                                         echo "<div class='modal fade' id='" . $modalId . "' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
                                                  <div class='modal-dialog'>
@@ -124,7 +124,7 @@ include '../components/header.php';
                                                              Apakah anda ingin menghapus data $data[perusahaan] ? Aksi ini <strong> TIDAK DAPAT </strong> dibatalkan!
                                                          </div>
                                                          <div class='modal-footer'>
-                                                             <a href='crud/delete.php?id=" . $data['id_supplier'] . "&data=supplier' class='btn btn-danger text-light'>HAPUS</a>
+                                                             <a href='delete.php?id=" . $data['id_supplier'] . "&data=supplier' class='btn btn-danger text-light'>HAPUS</a>
                                                              <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Batal</button>
                                                          </div>
                                                      </div>

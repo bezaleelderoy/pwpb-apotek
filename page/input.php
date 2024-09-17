@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: ../login/login.php');
+    header('Location: login.php');
     exit;
 }
 
@@ -59,7 +59,7 @@ include '../components/header.php'; ?>
 
                         if ($page == "karyawan") {
                         ?>
-                            <form action="../karyawan.php" method="post">
+                            <form action="karyawan.php" method="post">
                                 <div class="mb-3">
                                     <label class="form-label">Nama Karyawan</label>
                                     <input name="namakaryawan" type="text" class="form-control" id="exampleInputEmail1"
@@ -77,7 +77,7 @@ include '../components/header.php'; ?>
                                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                             </form>
                         <?php } else if ($page == "obat") { ?>
-                            <form action="../obat.php" method="post">
+                            <form action="obat.php" method="post">
                                 <div class="mb-3">
                                     <label class="form-label">Nama Obat</label>
                                     <input name="namaobat" type="text" class="form-control">
@@ -120,7 +120,7 @@ include '../components/header.php'; ?>
                                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                             </form>
                         <?php } else if ($page == "pelanggan") { ?>
-                            <form action="../pelanggan.php" method="post" enctype="multipart/form-data">
+                            <form action="pelanggan.php" method="post" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label class="form-label">Nama</label>
                                     <input name="namalengkap" type="text" class="form-control">
@@ -144,7 +144,7 @@ include '../components/header.php'; ?>
                                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                             </form>
                         <?php } else if ($page == "supplier") { ?>
-                            <form action="../supplier.php" method="post">
+                            <form action="supplier.php" method="post">
                                 <div class="mb-3">
                                     <label class="form-label">Nama</label>
                                     <input name="perusahaan" type="text" class="form-control">
@@ -164,7 +164,7 @@ include '../components/header.php'; ?>
                                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                             </form>
                         <?php } else if ($page == "users") { ?>
-                            <form action="../users.php" method="post">
+                            <form action="users.php" method="post">
                                 <div class="mb-3">
                                     <label class="form-label">Username</label>
                                     <input name="username" type="text" class="form-control">
@@ -198,6 +198,49 @@ include '../components/header.php'; ?>
                                     </select>
                                 </div>
                                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        <?php } else if ($page == "transaksi") { ?>
+                            <form>
+                                <div class="row mb-3">
+                                    <div class="col-sm-6">
+                                        <label class="form-label">Karyawan</label>
+
+                                        <?php
+
+                                        $lists = mysqli_query($conn, "SELECT namakaryawan FROM tb_karyawan INNER JOIN tb_login ON tb_karyawan.idkaryawan = tb_login.idkaryawan WHERE username = '$_SESSION[name]' ");
+
+                                        while ($data = mysqli_fetch_assoc($lists)) { ?>
+
+                                            <input type="text" name="namakaryawan" class="form-control" id="namakaryawan" value="<?= $data['namakaryawan'] ?>" disabled>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="form-label">Date</label>
+                                        <input type="date" class="form-control" name="tgltransaksi">
+                                    </div>
+                                </div class="row">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="form-label">Pelanggan</label>
+                                        <datalist id="pelanggan">
+                                            <?php
+
+                                            $lists = mysqli_query($conn, "SELECT namalengkap FROM tb_pelanggan");
+
+                                            while ($data = mysqli_fetch_assoc($lists)) { ?>
+
+                                                <option value="<?= $data['namalengkap'] ?>">
+                                                <?php } ?>
+                                        </datalist>
+                                        <input type="text" name="" class="form-control" id="pelanggan" list="pelanggan">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="form-label">Kategori</label>
+                                        <input type="text" class="form-control" name="kategoripelanggan">
+                                    </div>
+                                </div class="row">
+
+
                             </form>
                         <?php } ?>
                     </div>

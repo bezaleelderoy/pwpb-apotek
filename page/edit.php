@@ -1,9 +1,9 @@
 <?php
 
-include '../../config/conn.php';
+include '../config/conn.php';
 session_start();
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: ../login/login.php');
+    header('Location: login.php');
     exit;
 }
 
@@ -116,7 +116,7 @@ if ($data == "karyawan") {
 
 
                         <?php if ($page == "karyawan") { ?>
-                            <form action="../karyawan.php" method="post">
+                            <form action="karyawan.php" method="post">
                                 <div class="mb-3">
                                     <input type="hidden" name="idkaryawan" value="<?php echo $id ?>">
                                     <label class="form-label">Nama Karyawan</label>
@@ -135,7 +135,7 @@ if ($data == "karyawan") {
                                 <button type="submit" name="update" class="btn btn-primary">Update</button>
                             </form>
                         <?php } else if ($page == "obat") { ?>
-                            <form action="../obat.php" method="post">
+                            <form action="obat.php" method="post">
                                 <input type="hidden" name="id_obat" value="<?php echo $id ?>">
                                 <div class="mb-3">
                                     <label class="form-label">Nama Obat</label>
@@ -183,7 +183,7 @@ if ($data == "karyawan") {
                                 <button type="submit" name="update" class="btn btn-primary">Submit</button>
                             </form>
                         <?php } else if ($page == "pelanggan") { ?>
-                            <form action="../pelanggan.php" method="post" enctype="multipart/form-data">
+                            <form action="pelanggan.php" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="idpelanggan" value="<?php echo $id ?>">
                                 <div class="mb-3">
                                     <label class="form-label">Nama</label>
@@ -209,7 +209,7 @@ if ($data == "karyawan") {
                                 <button type="submit" name="update" class="btn btn-primary">Submit</button>
                             </form>
                         <?php } else if ($page == "supplier") { ?>
-                            <form action="../supplier.php" method="post">
+                            <form action="supplier.php" method="post">
                                 <input type="hidden" name="id_supplier" value="<?php echo $id ?>">
                                 <div class="mb-3">
                                     <label class="form-label">Nama</label>
@@ -230,7 +230,7 @@ if ($data == "karyawan") {
                                 <button type="submit" name="update" class="btn btn-primary">Submit</button>
                             </form>
                         <?php } else if ($page == "users") { ?>
-                            <form action="../users.php" method="post">
+                            <form action="users.php" method="post">
                                 <div class="mb-3">
                                     <label class="form-label">Username</label>
                                     <input value="<?= $username ?>" name="username" type="text" class="form-control"
