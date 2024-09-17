@@ -212,6 +212,7 @@ include '../components/header.php'; ?>
                                         while ($data = mysqli_fetch_assoc($lists)) { ?>
 
                                             <input type="text" name="namakaryawan" class="form-control" id="namakaryawan" value="<?= $data['namakaryawan'] ?>" disabled>
+                                            <input type="text" name="namakaryawan" class="form-control" id="namakaryawan" value="<?= $data['namakaryawan'] ?>" hidden>
                                         <?php } ?>
                                     </div>
                                     <div class="col-sm-6">
@@ -219,7 +220,7 @@ include '../components/header.php'; ?>
                                         <input type="date" class="form-control" name="tgltransaksi">
                                     </div>
                                 </div class="row">
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-sm-6">
                                         <label class="form-label">Pelanggan</label>
                                         <datalist id="pelanggan">
@@ -237,6 +238,30 @@ include '../components/header.php'; ?>
                                     <div class="col-sm-6">
                                         <label class="form-label">Kategori</label>
                                         <input type="text" class="form-control" name="kategoripelanggan">
+                                    </div>
+                                </div class="row">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="form-label">Barang</label>
+                                        <datalist id="obat">
+                                            <?php
+
+                                            $lists = mysqli_query($conn, "SELECT * FROM tb_obat");
+
+                                            while ($data = mysqli_fetch_assoc($lists)) { ?>
+
+                                                <option value="<?= $data['namaobat'] ?>">
+                                                <?php } ?>
+                                        </datalist>
+                                        <input type="text" name="obat" class="form-control" id="obat" list="obat">
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <label class="form-label">Jumlah</label>
+                                        <input type="number" class="form-control" name="jumlah">
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <label for="" class="form-label">Add</label>
+                                        <button class="form-control btn btn-primary">+</button>
                                     </div>
                                 </div class="row">
 
