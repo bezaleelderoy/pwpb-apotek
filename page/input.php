@@ -275,30 +275,32 @@ include '../components/header.php'; ?>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label class="form-label">Barang</label>
-                                        <datalist id="obat">
-                                            <?php
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <label class="form-label">Barang</label>
+                                                <datalist id="obat">
+                                                    <?php
 
-                                            $lists = mysqli_query($conn, "SELECT * FROM tb_obat");
+                                                    $lists = mysqli_query($conn, "SELECT * FROM tb_obat");
 
-                                            while ($data = mysqli_fetch_assoc($lists)) { ?>
+                                                    while ($data = mysqli_fetch_assoc($lists)) { ?>
 
-                                                <option value="<?= $data['namaobat'] ?>">
-                                                <?php } ?>
-                                        </datalist>
-                                        <input type="text" name="obat" class="form-control" id="obat" list="obat">
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <label class="form-label">Jumlah</label>
-                                        <input type="number" class="form-control" name="jumlah">
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <label for="" class="form-label">Add</label>
-                                        <button class="form-control btn btn-primary">+</button>
+                                                        <option value="<?= $data['namaobat'] ?>">
+                                                        <?php } ?>
+                                                </datalist>
+                                                <input type="text" name="obat" class="form-control" id="obat" list="obat">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label class="form-label">Jumlah</label>
+                                                <input type="number" class="form-control" name="jumlah">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label for="" class="form-label">Add</label>
+                                                <button class="form-control btn btn-primary">+</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-
                             </form>
                         <?php } ?>
                     </div>
