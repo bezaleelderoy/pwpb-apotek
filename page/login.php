@@ -74,7 +74,7 @@ include '../components/header.php';
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Password</label>
-                                <input name="password" type="text" class="form-control">
+                                <input name="password" type="password" class="form-control">
                             </div>
                             <button type="submit" name="login" class="btn btn-primary">Submit</button>
                         </form>
