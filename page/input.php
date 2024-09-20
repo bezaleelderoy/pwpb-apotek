@@ -207,16 +207,16 @@ include '../components/header.php'; ?>
                                     <label class="form-label">ID Transaksi</label>
                                     <?php
 
-                                    $query = mysqli_query($conn, "INSERT INTO tb_transaksi (idtransaksi) VALUES (NULL)");
+                                    // $query = mysqli_query($conn, "INSERT INTO tb_transaksi (idtransaksi) VALUES (NULL)");
 
-                                    $id = mysqli_query($conn, "SELECT idtransaksi 
-                                    FROM tb_transaksi
-                                    ORDER BY idtransaksi DESC
-                                    LIMIT 1;
-                                    ");
+                                    // $id = mysqli_query($conn, "SELECT idtransaksi 
+                                    // FROM tb_transaksi
+                                    // ORDER BY idtransaksi DESC
+                                    // LIMIT 1;
+                                    // ");
 
-                                    $fetchID = mysqli_fetch_assoc($id);
-                                    $transactionID = $fetchID['idtransaksi'];
+                                    // $fetchID = mysqli_fetch_assoc($id);
+                                    // $transactionID = $fetchID['idtransaksi'];
 
                                     if (isset($_POST['submit'])) {
                                         $obat = $_POST['obat'];
