@@ -232,7 +232,7 @@ include '../components/header.php'; ?>
                                         }
                                     }
                                     ?>
-                                    <input type="text" class="form-control" name="idtransaksi" value="<?= $transactionID ?>" disabled>
+                                    <input type="text" class="form-control" name="idtransaksi" value="" disabled>
 
 
 
