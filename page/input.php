@@ -205,37 +205,87 @@ include '../components/header.php'; ?>
                             <div class="row mb-3">
                                 <div class="col-sm-6">
                                     <label class="form-label">ID Transaksi</label>
-                                    <?php
 
-                                    // $query = mysqli_query($conn, "INSERT INTO tb_transaksi (idtransaksi) VALUES (NULL)");
-
-                                    // $id = mysqli_query($conn, "SELECT idtransaksi 
-                                    // FROM tb_transaksi
-                                    // ORDER BY idtransaksi DESC
-                                    // LIMIT 1;
-                                    // ");
-
-                                    // $fetchID = mysqli_fetch_assoc($id);
-                                    // $transactionID = $fetchID['idtransaksi'];
-
-                                    if (isset($_POST['submit'])) {
-                                        $obat = $_POST['obat'];
-                                        $jumlah = $_POST['jumlah'];
-                                        $find = mysqli_query($conn, "SELECT id_obat, hargajual, stok_obat FROM tb_obat WHERE namaobat = '$obat'");
-                                        while ($e = mysqli_fetch_assoc($find)) {
-                                            $hargasatuan = $e['hargajual'];
-                                            $idobat = $e['id_obat'];
-                                            $totalharga = $hargasatuan * $jumlah;
-                                            $stok_obat = $e['stok_obat'] - $jumlah;
-                                            $jumlah = mysqli_query($conn, "UPDATE tb_obat SET stok_obat = $stok_obat WHERE id_obat = $idobat");
-                                            $query = mysqli_query($conn, "INSERT INTO tb_detail_transaksi VALUES (NULL, $transactionID, $idobat, $jumlah, $hargasatuan, $totalharga");
-                                        }
-                                    }
-                                    ?>
-                                    <input type="text" class="form-control" name="idtransaksi" value="" disabled>
+                                    <input type="text" class="form-control mb-2" name="idtransaksi" value="" disabled>
 
 
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="row mb-3">
+                                                <div class="col-sm-6">
+                                                    <label class="form-label">Karyawan</label>
 
+                                                    <?php
+
+                                                    $lists = mysqli_query($conn, "SELECT namakaryawan FROM tb_karyawan INNER JOIN tb_login ON tb_karyawan.idkaryawan = tb_login.idkaryawan WHERE username = '$_SESSION[name]' ");
+
+                                                    while ($data = mysqli_fetch_assoc($lists)) { ?>
+
+                                                        <input type="text" name="namakaryawan" class="form-control" id="namakaryawan" value="<?= $data['namakaryawan'] ?>" disabled>
+                                                        <input type="text" name="namakaryawan" class="form-control" id="namakaryawan" value="<?= $data['namakaryawan'] ?>" hidden>
+                                                    <?php } ?>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label class="form-label">Date</label>
+                                                    <input type="text" class="form-control" name="tgltransaksi" value="<?= date("Y/m/d h:i:sa") ?>" disabled>
+                                                    <input type="text" class="form-control" name="tgltransaksi" value="<?= date("Y/m/d h:i:sa") ?>" hidden>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-12">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <label class="form-label">Pelanggan</label>
+                                                    <select name="idpelanggan" class="form-control">
+                                                        <?php
+
+                                                        $lists = mysqli_query($conn, "SELECT namalengkap, idpelanggan FROM tb_pelanggan");
+
+                                                        while ($data = mysqli_fetch_assoc($lists)) { ?>
+
+                                                            <option value="<?= $data['idpelanggan'] ?>"><?= $data['namalengkap'] ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label class="form-label">Kategori</label>
+                                                    <input type="text" class="form-control" name="kategoripelanggan">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <form action="input.php?data=transaksi" method="post">
+                                                        <label class="form-label">Barang</label>
+                                                        <datalist id="obat">
+                                                            <?php
+
+                                                            $lists = mysqli_query($conn, "SELECT * FROM tb_obat");
+
+                                                            while ($data = mysqli_fetch_assoc($lists)) { ?>
+
+                                                                <option value="<?= $data['namaobat'] ?>">
+                                                                <?php } ?>
+                                                        </datalist>
+                                                        <input type="text" name="obat" class="form-control" id="obat" list="obat">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <label class="form-label">Jumlah</label>
+                                                    <input type="number" class="form-control" name="jumlah">
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <label for="" class="form-label">Add</label>
+                                                    <button type="submit" name="submit" class="form-control btn btn-primary">+</button>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-sm-6">
@@ -249,97 +299,30 @@ include '../components/header.php'; ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                $query = mysqli_query($conn, "SELECT * FROM tb_detail_transaksi WHERE idtransaksi = $transactionID");
 
-                                                while ($data = mysqli_fetch_assoc($query)) {
-                                                ?>
-
-                                                <?php } ?>
                                             </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Total</th>
+                                                    <th>Rp 12000</th>
+                                                </tr>
+                                            </tfoot>
                                         </table>
                                     </div>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="row mb-3">
-                                        <div class="col-sm-6">
-                                            <label class="form-label">Karyawan</label>
-
-                                            <?php
-
-                                            $lists = mysqli_query($conn, "SELECT namakaryawan FROM tb_karyawan INNER JOIN tb_login ON tb_karyawan.idkaryawan = tb_login.idkaryawan WHERE username = '$_SESSION[name]' ");
-
-                                            while ($data = mysqli_fetch_assoc($lists)) { ?>
-
-                                                <input type="text" name="namakaryawan" class="form-control" id="namakaryawan" value="<?= $data['namakaryawan'] ?>" disabled>
-                                                <input type="text" name="namakaryawan" class="form-control" id="namakaryawan" value="<?= $data['namakaryawan'] ?>" hidden>
-                                            <?php } ?>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label">Date</label>
-                                            <input type="text" class="form-control" name="tgltransaksi" value="<?= date("Y/m/d h:i:sa") ?>" disabled>
-                                            <input type="text" class="form-control" name="tgltransaksi" value="<?= date("Y/m/d h:i:sa") ?>" hidden>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-6">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label class="form-label">Pelanggan</label>
-                                            <datalist id="pelanggan">
-                                                <?php
-
-                                                $lists = mysqli_query($conn, "SELECT namalengkap FROM tb_pelanggan");
-
-                                                while ($data = mysqli_fetch_assoc($lists)) { ?>
-
-                                                    <option value="<?= $data['namalengkap'] ?>">
-                                                    <?php } ?>
-                                            </datalist>
-                                            <input type="text" name="" class="form-control" id="pelanggan" list="pelanggan">
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label">Kategori</label>
-                                            <input type="text" class="form-control" name="kategoripelanggan">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
+                                    <label class="form-label">Bayar</label>
                                     <div class="row">
                                         <div class="col-sm-8">
-                                            <form action="input.php?data=transaksi" method="post">
-                                                <label class="form-label">Barang</label>
-                                                <datalist id="obat">
-                                                    <?php
-
-                                                    $lists = mysqli_query($conn, "SELECT * FROM tb_obat");
-
-                                                    while ($data = mysqli_fetch_assoc($lists)) { ?>
-
-                                                        <option value="<?= $data['namaobat'] ?>">
-                                                        <?php } ?>
-                                                </datalist>
-                                                <input type="text" name="obat" class="form-control" id="obat" list="obat">
+                                            <input type="number" class="form-control">
                                         </div>
-                                        <div class="col-sm-2">
-                                            <label class="form-label">Jumlah</label>
-                                            <input type="number" class="form-control" name="jumlah">
+                                        <div class="col-sm-4">
+                                            <button type="submit" class="btn btn-primary">Bayar</button>
                                         </div>
-                                        <div class="col-sm-2">
-                                            <label for="" class="form-label">Add</label>
-                                            <button type="submit" name="submit" class="form-control btn btn-primary">+</button>
-                                        </div>
-                                        </form>
                                     </div>
+
                                 </div>
                             </div>
+
                             </form>
                         <?php } ?>
                     </div>
