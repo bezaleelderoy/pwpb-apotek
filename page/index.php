@@ -52,7 +52,7 @@ include '../components/header.php';
                         <div class="text-end">
                             <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"></i>
                                 <?php
-                                $query = mysqli_query($conn, "SELECT * FROM tb_transaksi");
+                                $query = mysqli_query($conn, "SELECT * FROM tb_transaksi ");
                                 $transaksi = mysqli_num_rows($query);
                                 echo $transaksi ?>
                             </h2>
@@ -122,7 +122,7 @@ include '../components/header.php';
                                 <tbody>
                                     <?php
                                     $no = 1;
-                                    $query = mysqli_query($conn, "SELECT * FROM tb_transaksi INNER JOIN tb_pelanggan ON tb_transaksi.idpelanggan = tb_pelanggan.idpelanggan INNER JOIN tb_karyawan ON tb_transaksi.idkaryawan = tb_karyawan.idkaryawan INNER JOIN tb_detail_transaksi ON tb_transaksi.idtransaksi = tb_detail_transaksi.idtransaksi");
+                                    $query = mysqli_query($conn, "SELECT * FROM tb_transaksi INNER JOIN tb_pelanggan ON tb_transaksi.idpelanggan = tb_pelanggan.idpelanggan INNER JOIN tb_karyawan ON tb_transaksi.idkaryawan = tb_karyawan.idkaryawan INNER JOIN tb_detail_transaksi ON tb_transaksi.idtransaksi = tb_detail_transaksi.idtransaksi ORDER BY tb_transaksi.idtransaksi DESC");
 
                                     while ($data = mysqli_fetch_assoc($query)) {
                                         $modalId = 'staticBackdrop' . $data['idtransaksi'];
